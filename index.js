@@ -49,8 +49,9 @@ function processingFile(file, options) {
             relativeFileName = file.replace(moduleName + '/tmpl/', ''),
             dstPath = path.resolve(options.dst, moduleName, options.tmplDir || '', relativeFileName.replace(/(\.html)|(\.hbs)/, '.js')),
             tmplSource = fs.readFileSync(filePath).toString(),
+            pathToApp = options.pathToApp || '/src/app',
             handleBarsJs,
-            precompile;
+            precompile,;
 
         tmplSource = buildPartials(tmplSource, filePath, options);
 
@@ -63,7 +64,7 @@ function processingFile(file, options) {
 
         if (options.isCommonJs) {
             handleBarsJs = ' ' +
-                'Handlebars = require(process.cwd() + \'/src/app\').Handlebars;' +
+                'Handlebars = require(process.cwd() + \'' + pathToApp + '\').Handlebars;' +
                 'module.exports = Handlebars.template(' + precompile + ');';
         } else {
             handleBarsJs = ' ' +
