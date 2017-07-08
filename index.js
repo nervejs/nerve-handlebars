@@ -51,7 +51,7 @@ function processingFile(file, options) {
             tmplSource = fs.readFileSync(filePath).toString(),
             pathToApp = options.pathToApp || '/src/app',
             handleBarsJs,
-            precompile,;
+            precompile;
 
         tmplSource = buildPartials(tmplSource, filePath, options);
 
