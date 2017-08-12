@@ -47,7 +47,7 @@ function processingFile(file, options) {
         let filePath = path.resolve(options.cwd, file),
             moduleName = file.split('/')[0],
             relativeFileName = file.replace(moduleName + '/tmpl/', ''),
-            dstPath = path.resolve(options.dst, moduleName, options.tmplDir || '', relativeFileName.replace(/(\.html)|(\.hbs)/, '.js')),
+            dstPath = options.isNoPreparePath ? path.resolve(options.dst, file.replace(/(\.html)|(\.hbs)/, '.js')) : path.resolve(options.dst, moduleName, options.tmplDir || '', relativeFileName.replace(/(\.html)|(\.hbs)/, '.js')),
             tmplSource = fs.readFileSync(filePath).toString(),
             pathToApp = options.pathToApp || '/src/app',
             handleBarsJs,

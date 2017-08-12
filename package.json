@@ -1,6 +1,6 @@
 {
   "name": "nerve-handlebars",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "handlebars compiler for nervejs",
   "main": "index.js",
   "repository": {
