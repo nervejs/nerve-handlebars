@@ -34,7 +34,7 @@ function buildPartials(source, fileName, options) {
             if (!fs.existsSync(fullIncludeFileName)) {
                 console.log('No such file or directory: ' + fullIncludeFileName + '\nin file ' + fileName);
             } else {
-                source = source.replace(item, buildPartials(fs.readFileSync(fullIncludeFileName).toString(), fullIncludeFileName));
+                source = source.replace(item, buildPartials(fs.readFileSync(fullIncludeFileName).toString(), fullIncludeFileName, options));
             }
         });
     }
