@@ -5,6 +5,10 @@ const Handlebars = require('handlebars');
 const glob = require('glob');
 const n2a = require('native2ascii').native2ascii;
 
+let logged = true;
+
+const log = () => logged && console.log.apply(this, arguments);
+
 function buildPartials(source, fileName, options) {
     let dir = path.dirname(fileName),
         includes = source.match(/\{\{>(.*)\}\}/g);
@@ -32,7 +36,7 @@ function buildPartials(source, fileName, options) {
             }
 
             if (!fs.existsSync(fullIncludeFileName)) {
-                console.log('No such file or directory: ' + fullIncludeFileName + '\nin file ' + fileName);
+                log('No such file or directory: ' + fullIncludeFileName + '\nin file ' + fileName);
             } else {
                 source = source.replace(item, buildPartials(fs.readFileSync(fullIncludeFileName).toString(), fullIncludeFileName, options));
             }
@@ -58,8 +62,8 @@ function processingFile(file, options) {
         try {
             precompile = Handlebars.precompile(tmplSource);
         } catch (err) {
-            console.log(err);
-            console.log('Cannot compile ' + file);
+            log(err);
+            log('Cannot compile ' + file);
         }
 
         if (options.isCommonJs) {
@@ -79,7 +83,7 @@ function processingFile(file, options) {
 
         fs.mkdirpSync(path.dirname(dstPath));
         fs.writeFileSync(dstPath, n2a(handleBarsJs));
-        console.log(`Compiled: ${dstPath}`);
+        log(`Compiled: ${dstPath}`);
         resolve();
     });
 }
@@ -88,15 +92,18 @@ module.exports = function (options) {
     options = options || {};
     options = _.merge({
         cwd: process.cwd(),
-        paths: []
+        paths: [],
+        logged: true
     }, options);
+
+    logged = options.log;
 
     return new Promise((resolve, reject) => {
         glob(options.src, {
             cwd: options.cwd
         }, (err, files) => {
             if (err) {
-                console.log(err);
+                log(err);
             } else {
                 Promise.all(files.map((file) => processingFile(file, options)))
                     .then(resolve)
