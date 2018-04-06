@@ -20,7 +20,7 @@ function buildPartials(source, fileName, options) {
                 ext = path.extname(relativeFileName),
                 isPathPrefixFound = false;
 
-            if (ext !== '.html') {
+            if (['.html', '.js', '.css'].indexOf(ext) === -1) {
                 relativeFileName += '.hbs';
             }
 
