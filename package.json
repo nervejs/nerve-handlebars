@@ -1,6 +1,6 @@
 {
 	"name": "nerve-handlebars",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "handlebars compiler for nervejs",
 	"main": "index.js",
 	"repository": {
@@ -19,7 +19,7 @@
 	},
 	"homepage": "https://github.com/nervejs/nerve-handlebars#readme",
 	"dependencies": {
-		"fs-extra": "^9.0.0",
+		"fs-extra": "^3.0.1",
 		"glob": "^7.1.6",
 		"handlebars": "4.7.6",
 		"native2ascii": "0.0.5"
