@@ -1,28 +1,27 @@
 {
-  "name": "nerve-handlebars",
-  "version": "1.0.7",
-  "description": "handlebars compiler for nervejs",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nervejs/nerve-handlebars.git"
-  },
-  "keywords": [
-    "template",
-    "handlebars",
-    "nerve"
-  ],
-  "author": "denis.yarkeev@gmail.com",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nervejs/nerve-handlebars/issues"
-  },
-  "homepage": "https://github.com/nervejs/nerve-handlebars#readme",
-  "dependencies": {
-    "fs-extra": "^3.0.1",
-    "glob": "^7.1.2",
-    "handlebars": "4.1.2",
-    "lodash": "^4.17.4",
-    "native2ascii": "0.0.5"
-  }
+	"name": "nerve-handlebars",
+	"version": "1.1.0",
+	"description": "handlebars compiler for nervejs",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nervejs/nerve-handlebars.git"
+	},
+	"keywords": [
+		"template",
+		"handlebars",
+		"nerve"
+	],
+	"author": "denis.yarkeev@gmail.com",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/nervejs/nerve-handlebars/issues"
+	},
+	"homepage": "https://github.com/nervejs/nerve-handlebars#readme",
+	"dependencies": {
+		"fs-extra": "^9.0.0",
+		"glob": "^7.1.6",
+		"handlebars": "4.7.6",
+		"native2ascii": "0.0.5"
+	}
 }
